@@ -20,7 +20,9 @@ div.selector span,
 div.checker span, 
 div.radio span, 
 div.uploader, 
-div.uploader span.action {
+div.uploader span.action,
+div.text input,
+div.text span{
   background-image: url(../images/sprite.png);
   background-repeat: no-repeat;
 }
@@ -32,7 +34,8 @@ div.uploader span.action {
 .selector *, 
 .radio *, 
 .checker *, 
-.uploader *{
+.uploader *,
+.text *{
 	margin: 0;
 	padding: 0;
 }
@@ -286,6 +289,47 @@ div.uploader.disabled span.action {
   background-position: right -381px;
 }
 
+/* Text */
+
+div.text {
+  height: 28px;
+  border: 0;
+}
+
+div.text span {
+  background-position: left -130px;
+  height: 28px;
+  /*line-height: 24px;*/
+}
+
+div.text input {
+  height: 21px;
+  padding-top: 7px;
+  /*line-height: 24px;*/
+  background-position: 0px -297px;
+  border: 0;
+}
+
+div.text.focus input,
+div.text.hover input,
+div.text:hover input{
+  background-position: 0px -353px;
+}
+
+div.text.focus span,
+div.text.hover span,
+div.text:hover span {
+  background-position: left -186px;
+}
+
+div.text.disabled {
+  background-position: 0px -325px;
+}
+
+div.text.disabled span {
+  background-position: right -381px;
+}
+
 /* PRESENTATION */
 
 /* Select */
@@ -362,6 +406,32 @@ div.uploader.disabled span.filename {
   border-color: #ddd;
   color: #aaa;
 }
+
+/* Text */
+div.text {
+  width: 190px;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+div.text span {
+  width: 10px;
+  background-color: #fff;
+}
+
+div.text input {
+  color: #777;
+  font-size: 11px;
+  width: 170px;
+}
+
+div.text.disabled span {
+  color: #aaa;
+}
+
+div.text.disabled input {
+  color: #aaa;
+}
 /*
 
 CORE FUNCTIONALITY 
@@ -370,7 +440,7 @@ Not advised to edit stuff below this line
 -----------------------------------------------------
 */
 
-.selector select:focus, .radio input:focus, .checker input:focus, uploader input:focus {
+.selector select:focus, .radio input:focus, .checker input:focus, uploader input:focus, .text input:focus {
   outline: 0;
 }
 
@@ -474,4 +544,33 @@ div.uploader input {
   height: 25px;
   border: none;
   cursor: default;
+}
+
+/* Text */
+
+div.text {
+  position: relative;
+  float: left;
+  overflow: hidden;
+  cursor: default;
+}
+
+div.text span {
+  float: right;
+  display: inline;
+  padding: 2px 0px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+
+div.text input {
+  display: block;
+  float: left;
+  border: none;
+  cursor: default;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding-left: 10px;
 }

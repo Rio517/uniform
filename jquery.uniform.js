@@ -44,6 +44,7 @@ Enjoy!
       selectClass:   'selector',
       radioClass: 'radio',
       checkboxClass: 'checker',
+      textClass: 'text',
       fileClass: 'uploader',
       filenameClass: 'filename',
       fileBtnClass: 'action',
@@ -356,6 +357,66 @@ Enjoy!
       storeElement(elem);
 
     }
+    
+    function doText(elem){
+      //sanitize input
+      $el = $(elem);
+
+      var divTag = $('<div />'),
+          endTag = $('<span />');
+
+      divTag.addClass(options.textClass);
+
+      if(options.useID){
+        divTag.attr("id", options.idPrefix+"-"+$el.attr("id"));
+      }
+
+      //wrap with the proper elements
+      $el.wrap(divTag);
+      $el.after(endTag);
+
+      //redefine variables
+      divTag = $el.closest("div");
+      endTag = $el.siblings("span");
+
+      //set the size
+      if(!$el.attr("size")){
+        var divWidth = divTag.width();
+        //$el.css("width", divWidth);
+        $el.attr("size", divWidth/10);
+      }
+
+      //actions
+      $el
+      .focus(function(){
+        divTag.addClass(options.focusClass);
+      })
+      .blur(function(){
+        divTag.removeClass(options.focusClass);
+      })
+      .mousedown(function() {
+        if(!$(elem).is(":disabled")){
+          divTag.addClass(options.activeClass);
+        }
+      })
+      .mouseup(function() {
+        divTag.removeClass(options.activeClass);
+      })
+      .hover(function() {
+        divTag.addClass(options.hoverClass);
+      }, function() {
+        divTag.removeClass(options.hoverClass);
+      });
+
+      //handle defaults
+      if($el.attr("disabled")){
+        //box is checked by default, check our box
+        divTag.addClass(options.disabledClass);
+      }
+      
+      storeElement(elem);
+
+    }
 
     function storeElement(elem){
       //store this element in our global array
@@ -481,6 +542,9 @@ Enjoy!
         }else if(elem.is(":file")){
           //element is a file upload
           doFile(elem);
+        }else if(elem.is(":text")){
+          //element is a text input
+          doText(elem);
         }
 
       }
