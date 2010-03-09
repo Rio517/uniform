@@ -519,6 +519,17 @@ Enjoy!
           }else{
             divTag.removeClass(options.disabledClass);
           }
+        }else if($e.is(":text")){
+          divTag = $e.parent("div");
+          endTag = $e.siblings('span');
+
+          divTag.removeClass(options.hoverClass+" "+options.focusClass+" "+options.activeClass);
+
+          if($e.is(":disabled")){
+            divTag.addClass(options.disabledClass);
+          }else{
+            divTag.removeClass(options.disabledClass);
+          }
         }
       });
     }

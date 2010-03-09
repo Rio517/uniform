@@ -21,7 +21,7 @@ div.checker span,
 div.radio span, 
 div.uploader, 
 div.uploader span.action,
-div.text input,
+div.text,
 div.text span{
   background-image: url(../images/sprite.png);
   background-repeat: no-repeat;
@@ -292,6 +292,7 @@ div.uploader.disabled span.action {
 /* Text */
 
 div.text {
+  background-position: 0px -297px;
   height: 28px;
   border: 0;
 }
@@ -305,14 +306,13 @@ div.text span {
 div.text input {
   height: 21px;
   padding-top: 7px;
-  /*line-height: 24px;*/
-  background-position: 0px -297px;
+  background-color: transparent;
   border: 0;
 }
 
-div.text.focus input,
-div.text.hover input,
-div.text:hover input{
+div.text.focus,
+div.text.hover,
+div.text:hover{
   background-position: 0px -353px;
 }
 
@@ -409,9 +409,8 @@ div.uploader.disabled span.filename {
 
 /* Text */
 div.text {
-  width: 190px;
   margin-bottom: 20px;
-  cursor: pointer;
+  width: 180px;
 }
 
 div.text span {
@@ -552,7 +551,7 @@ div.text {
   position: relative;
   float: left;
   overflow: hidden;
-  cursor: default;
+  padding-left: 10px;
 }
 
 div.text span {
@@ -560,7 +559,6 @@ div.text span {
   display: inline;
   padding: 2px 0px;
   overflow: hidden;
-  cursor: pointer;
 }
 
 
@@ -572,5 +570,4 @@ div.text input {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  padding-left: 10px;
 }
