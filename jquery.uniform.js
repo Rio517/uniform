@@ -41,23 +41,27 @@ Enjoy!
 (function($) {
   $.uniform = {
     options: {
-      selectClass:   'selector',
-      radioClass: 'radio',
-      checkboxClass: 'checker',
-      textClass: 'text',
-      fileClass: 'uploader',
+      selectClass:    'selector',
+      radioClass:     'radio',
+      checkboxClass:  'checker',
+      textClass:      'text',
+      textareaClass:  'textarea',
+      fileClass:      'uploader',
+      fileBtnText:    'Choose File',
+      fileDefaultText:'No file selected',
+      
+      useID: true,
+      idPrefix: 'uniform',
+      resetSelector: false,
+      
+      /*the following is too internal to be here as options*/
       filenameClass: 'filename',
       fileBtnClass: 'action',
-      fileDefaultText: 'No file selected',
-      fileBtnText: 'Choose File',
       checkedClass: 'checked',
       focusClass: 'focus',
       disabledClass: 'disabled',
       activeClass: 'active',
-      hoverClass: 'hover',
-      useID: true,
-      idPrefix: 'uniform',
-      resetSelector: false
+      hoverClass: 'hover'
     },
     elements: []
   };
@@ -379,12 +383,92 @@ Enjoy!
       divTag = $el.closest("div");
       endTag = $el.siblings("span");
 
-      //set the size
+      //set the size (is it necessary for input text? need test.)
       if(!$el.attr("size")){
         var divWidth = divTag.width();
         //$el.css("width", divWidth);
         $el.attr("size", divWidth/10);
       }
+
+      //actions
+      $el
+      .focus(function(){
+        divTag.addClass(options.focusClass);
+      })
+      .blur(function(){
+        divTag.removeClass(options.focusClass);
+      })
+      .mousedown(function() {
+        if(!$(elem).is(":disabled")){
+          divTag.addClass(options.activeClass);
+        }
+      })
+      .mouseup(function() {
+        divTag.removeClass(options.activeClass);
+      })
+      .hover(function() {
+        divTag.addClass(options.hoverClass);
+      }, function() {
+        divTag.removeClass(options.hoverClass);
+      });
+
+      //handle defaults
+      if($el.attr("disabled")){
+        //box is checked by default, check our box
+        divTag.addClass(options.disabledClass);
+      }
+      
+      storeElement(elem);
+
+    }
+    
+    function doTextarea(elem){
+      //sanitize input
+      $el = $(elem);
+
+      var divTag = $('<div />'),
+          topLeftTag  = $('<span class="top-left" />'),
+          midLeftTag  = $('<span class="mid-left" />'),
+          botLeftTag  = $('<span class="bot-left" />'),
+          topRightTag = $('<span class="top-right" />'),
+          midRightTag = $('<span class="mid-right" />'),
+          botRightTag = $('<span class="bot-right" />');
+
+      divTag.addClass(options.textareaClass);
+
+      if(options.useID){
+        divTag.attr("id", options.idPrefix+"-"+$el.attr("id"));
+      }
+
+      //wrap with the proper elements
+      $el.wrap(divTag);
+      $el.after(topLeftTag);
+      $el.after(midLeftTag);
+      $el.after(botLeftTag);
+      $el.after(topRightTag);
+      $el.after(midRightTag);
+      $el.after(botRightTag);
+
+      //redefine variables
+      divTag = $el.closest("div");
+      topLeftTag  = $el.siblings('span.top-left');
+      midLeftTag  = $el.siblings('span.mid-left');
+//      botLeftTag  = $el.siblings('span.bot-left');
+//      topRightTag = $el.siblings('span.top-right');
+      midRightTag = $el.siblings('span.mid-right');
+//      botRightTag = $el.siblings('span.bot-right');
+
+//      //set the size
+//      if(!$el.attr("size")){
+//        var divWidth = divTag.width();
+//        //$el.css("width", divWidth);
+//        $el.attr("size", divWidth/10);
+//      }
+
+        //var midHeight = parseInt(divTag.css("height")) - ( 2 * parseInt(topLeftTag.css("height")) );
+        var midHeight = parseInt($el.css("height"))+2;
+        midLeftTag.css("height", midHeight + "px" );
+        midRightTag.css("height", midHeight + "px" );
 
       //actions
       $el
@@ -508,7 +592,7 @@ Enjoy!
         }else if($e.is(":file")){
           divTag = $e.parent("div");
           filenameTag = $e.siblings(options.filenameClass);
-          btnTag = $e.siblings(options.fileBtnClass);
+          btnTag = $e.siblings(options.fileBtnClass); //TODO: remove line
 
           divTag.removeClass(options.hoverClass+" "+options.focusClass+" "+options.activeClass);
 
@@ -521,7 +605,17 @@ Enjoy!
           }
         }else if($e.is(":text")){
           divTag = $e.parent("div");
-          endTag = $e.siblings('span');
+          endTag = $e.siblings('span'); //TODO: remove line
+
+          divTag.removeClass(options.hoverClass+" "+options.focusClass+" "+options.activeClass);
+
+          if($e.is(":disabled")){
+            divTag.addClass(options.disabledClass);
+          }else{
+            divTag.removeClass(options.disabledClass);
+          }
+        }else if($e.is("textarea")){
+          divTag = $e.parent("div");
 
           divTag.removeClass(options.hoverClass+" "+options.focusClass+" "+options.activeClass);
 
@@ -556,6 +650,9 @@ Enjoy!
         }else if(elem.is(":text")){
           //element is a text input
           doText(elem);
+        }else if(elem.is("textarea")){
+          //element is a textarea
+          doTextarea(elem);
         }
 
       }
