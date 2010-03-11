@@ -494,6 +494,7 @@ div.uploader {
 
 div.uploader span.action {
   width: 85px;
+  color: #FFF;
   text-align: center;
   text-shadow: #fff 0px 1px 0px;
   background-color: #fff;
