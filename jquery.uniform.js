@@ -383,13 +383,6 @@ Enjoy!
       divTag = $el.closest("div");
       endTag = $el.siblings("span");
 
-      //set the size (is it necessary for input text? need test.)
-      if(!$el.attr("size")){
-        var divWidth = divTag.width();
-        //$el.css("width", divWidth);
-        $el.attr("size", divWidth/10);
-      }
-
       //actions
       $el
       .focus(function(){

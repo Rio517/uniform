@@ -525,7 +525,6 @@ div.uploader.disabled span.filename {
 /* Text */
 div.text {
   margin-bottom: 20px;
-  width: 180px;
 }
 
 div.text span {
@@ -679,22 +678,21 @@ div.text {
   float: left;
   overflow: hidden;
   padding-left: 10px;
+  padding-right: 10px;
 }
 
 div.text span {
-  float: right;
-  display: inline;
-  padding: 2px 0px;
+  right: 0;
+  position: absolute;
   overflow: hidden;
 }
 
 div.text input {
+  padding-right: 1px;
   display: block;
   float: left;
   border: none;
   cursor: default;
-  overflow: hidden;
-  text-overflow: ellipsis;
   white-space: nowrap;
 }
 
