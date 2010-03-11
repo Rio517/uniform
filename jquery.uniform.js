@@ -453,22 +453,11 @@ Enjoy!
       divTag = $el.closest("div");
       topLeftTag  = $el.siblings('span.top-left');
       midLeftTag  = $el.siblings('span.mid-left');
-//      botLeftTag  = $el.siblings('span.bot-left');
-//      topRightTag = $el.siblings('span.top-right');
       midRightTag = $el.siblings('span.mid-right');
-//      botRightTag = $el.siblings('span.bot-right');
 
-//      //set the size
-//      if(!$el.attr("size")){
-//        var divWidth = divTag.width();
-//        //$el.css("width", divWidth);
-//        $el.attr("size", divWidth/10);
-//      }
-
-        //var midHeight = parseInt(divTag.css("height")) - ( 2 * parseInt(topLeftTag.css("height")) );
-        var midHeight = parseInt($el.css("height"))+2;
-        midLeftTag.css("height", midHeight + "px" );
-        midRightTag.css("height", midHeight + "px" );
+      var midHeight = parseInt($el.css("height"))+2;
+      midLeftTag.css("height", midHeight + "px" );
+      midRightTag.css("height", midHeight + "px" );
 
       //actions
       $el
