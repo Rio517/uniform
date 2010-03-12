@@ -49,7 +49,7 @@ div.textarea span {
 /* Select */
 
 div.selector {
-  background-position: -501px -169px;
+  background-position: -589px -169px;
   line-height: 34px;
 	height: 34px;
 }
@@ -68,7 +68,7 @@ div.selector select {
 
 div.selector:active, 
 div.selector.active {
-	background-position: -501px -202px;
+	background-position: -589px -202px;
 }
 
 div.selector:active span, 
@@ -77,7 +77,7 @@ div.selector.active span {
 }
 
 div.selector.focus, div.selector.hover, div.selector:hover {
-	background-position: -501px -236px;
+	background-position: -589px -236px;
 }
 
 div.selector.focus span, div.selector.hover span, div.selector:hover span {
@@ -88,7 +88,7 @@ div.selector.focus:active,
 div.selector.focus.active,
 div.selector:hover:active,
 div.selector.active:hover {
-	background-position: -501px -270px;
+	background-position: -589px -270px;
 }
 
 div.selector.focus:active span,
@@ -99,7 +99,7 @@ div.selector.focus.active span {
 }
 
 div.selector.disabled {
-	background-position: -501px -303px;
+	background-position: -589px -303px;
 }
 
 div.selector.disabled span {
@@ -448,7 +448,6 @@ div.textarea.disabled span.bot-right {
 
 /* Select */
 div.selector {
-  margin-bottom: 20px;
   width: 190px;
   font-size: 12px;
 }
@@ -466,13 +465,13 @@ div.selector span {
 }
 
 div.selector span {
-  color: #666;
+  color: #333;
   width: 158px;
   text-shadow: 0 1px 0 #fff;
 }
 
 div.selector.disabled span {
-	color: #bbb;
+	color: #b6b6b6;
 }
 
 /* Checker */
@@ -487,7 +486,6 @@ div.radio {
 
 /* Uploader */
 div.uploader {
-  margin-bottom: 20px;
   cursor: pointer;
 }
 
@@ -496,15 +494,15 @@ div.uploader span.action {
   text-align: center;
   text-shadow: #fff 0px 1px 0px;
   background-color: #fff;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: bold;
 }
 
 div.uploader span.filename {
-  color: #777;
+  color: #333;
   width: 82px;
   border-right: solid 1px #bbb;
-  font-size: 11px;
+  font-size: 12px;
 }
 
 div.uploader input {
@@ -516,13 +514,11 @@ div.uploader.disabled span.action {
 }
 
 div.uploader.disabled span.filename {
-  border-color: #ddd;
-  color: #aaa;
+  color: #b6b6b6;
 }
 
 /* Text */
 div.text {
-  margin-bottom: 20px;
 }
 
 div.text span {
@@ -531,29 +527,28 @@ div.text span {
 }
 
 div.text input {
-  color: #777;
-  font-size: 11px;
+  color: #333;
+  font-size: 12px;
   width: 170px;
 }
 
 div.text.disabled input {
-  color: #aaa;
+  color: #b6b6b6;
 }
 
 /* Textarea */
 div.textarea {
   padding: 0 5px;
-  margin-bottom: 20px;
 }
 
 div.textarea textarea {
-  color: #777;
-  font-size: 11px;
+  color: #333;
+  font-size: 12px;
   width: 287px;
 }
 
 div.textarea.disabled textarea {
-  color: #aaa;
+  color: #b6b6b6;
 }
 /*
 
@@ -587,6 +582,7 @@ div.selector select {
 	position: absolute;
 	opacity: 0;
   height: 25px;
+  margin-left: 3px;
   border: none;
   background: none;
 }
@@ -674,7 +670,6 @@ div.uploader input {
 div.text {
   position: relative;
   float: left;
-  overflow: hidden;
   padding-left: 10px;
   padding-right: 10px;
 }
