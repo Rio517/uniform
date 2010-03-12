@@ -487,13 +487,11 @@ div.radio {
 
 /* Uploader */
 div.uploader {
-  width: 190px;
   margin-bottom: 20px;
   cursor: pointer;
 }
 
 div.uploader span.action {
-  width: 85px;
   color: #FFF;
   text-align: center;
   text-shadow: #fff 0px 1px 0px;
@@ -644,7 +642,7 @@ div.uploader {
 div.uploader span.action {
   float: left;
   display: inline;
-  padding-top: 2px;
+  padding: 2px 10px 0;
   overflow: hidden;
   cursor: pointer;
 }
